@@ -17,6 +17,17 @@ for question, keywords in questions.items():
     t_key += len(keywords)
 print("\nInterview Completed!")
 print(f"Final Score: {t_score}/{t_key}")
+percentage = (t_score / t_key) * 100
+
+print(f"\nFinal Score: {t_score}/{t_key}")
+print(f"Percentage: {percentage:.2f}%")
+if percentage >= 80:
+    print("Excellent performance!")
+elif percentage >= 60:
+    print("Good performance!")
+else:
+    print("Needs improvement.")
+    
 
 
 
