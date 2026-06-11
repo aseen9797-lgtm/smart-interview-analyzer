@@ -5,9 +5,12 @@ for question, keywords in questions.items():
     print("\nQuestion:", question)
     score = 0
     answer = input("Your answer: ")
+    t1 = answer.lower()
+    t2 = t1.split()
+    print(t2)
     print("Feedback:")
     for i in keywords:
-        if i.lower() in answer.lower():
+        if i.lower() in t2:
             print("yes", i)
             score += 1
         else:
