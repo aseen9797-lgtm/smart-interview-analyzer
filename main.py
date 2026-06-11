@@ -7,10 +7,15 @@ for question, keywords in questions.items():
     answer = input("Your answer: ")
     t1 = answer.lower()
     t2 = t1.split()
-    print(t2)
+    stop_words = ["is", "a","the","an"]
+    filtered =[]
     print("Feedback:")
+    for j in t2:
+        if j not in stop_words:
+            filtered.append(j)
+
     for i in keywords:
-        if i.lower() in t2:
+        if i.lower() in filtered:
             print("yes", i)
             score += 1
         else:
@@ -30,33 +35,3 @@ elif percentage >= 60:
     print("Good performance!")
 else:
     print("Needs improvement.")
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
