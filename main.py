@@ -1,21 +1,25 @@
 from questions import questions
+from nltk.stem import PorterStemmer
+stemmer = PorterStemmer()
+def clean_text(answer):
+    t1 = answer.lower()
+    t2 = t1.split()
+    stop_words = ["is", "a","the","an", "and","to","in","of","are","for"]
+    filtered =[]
+    for j in t2:
+        if j not in stop_words:
+            filtered.append(stemmer.stem(j))
+    return filtered
 t_score = 0
 t_key = 0
 for question, keywords in questions.items():
     print("\nQuestion:", question)
     score = 0
     answer = input("Your answer: ")
-    t1 = answer.lower()
-    t2 = t1.split()
-    stop_words = ["is", "a","the","an"]
-    filtered =[]
+    filtered = clean_text(answer)
     print("Feedback:")
-    for j in t2:
-        if j not in stop_words:
-            filtered.append(j)
-
     for i in keywords:
-        if i.lower() in filtered:
+        if stemmer.stem(i.lower()) in filtered:
             print("yes", i)
             score += 1
         else:
