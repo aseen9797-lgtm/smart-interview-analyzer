@@ -20,8 +20,22 @@ print(t2)"""
 print("yes")"""
 
 #now lets do stemming
-from nltk.stem import PorterStemmer
+"""from nltk.stem import PorterStemmer
 stemmer = PorterStemmer()
 words = ["prediction" ,"predicted","predicting","predict"]
 for i in words:
-    print(i, stemmer.stem(i))
+    print( stemmer.stem(i))"""
+
+# TF AND IDF
+from sklearn.feature_extraction.text import TfidfVectorizer
+documents = [
+    "Python is a programming language",
+    "Python is used for machine learning"
+]
+vectorizer = TfidfVectorizer()
+matrix = vectorizer.fit_transform(documents)
+print(vectorizer.get_feature_names_out())
+print(matrix.toarray())
+from sklearn.metrics.pairwise import cosine_similarity
+similarity = cosine_similarity(matrix[0], matrix[1])
+print(similarity)
