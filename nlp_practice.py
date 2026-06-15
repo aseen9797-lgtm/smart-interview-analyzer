@@ -39,3 +39,4 @@ print(matrix.toarray())
 from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(matrix[0], matrix[1])
 print(similarity)
+print(matrix)
