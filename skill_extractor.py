@@ -1,10 +1,7 @@
 from questions_mapping import skill_mapping
 import random
 def generate_questions():
-    resume_text = """
-    I have experience with Python, Machine Learning, Pandas and NumPy.
-    I have built NLP projects and worked with TensorFlow.
-    """
+    resume_text = input("Paste your resume:\n")
     found_skills = []
     for skill in skill_mapping:
         if skill.lower() in resume_text.lower():
