@@ -10,8 +10,7 @@ def compare_answers(ideal_answer, user_answer):
     score = similarity[0][0] * 100
     return score
 
-selected_questions = generate_questions()
-
+selected_questions, found_skills = generate_questions()
 total_score = 0
 report = []
 category_scores = {}
@@ -66,6 +65,9 @@ else:
     average_score = 0
 print("\nInterview Completed!")
 print(f"Average Score: {average_score:.2f}%")
+print("\nDetected Skills:")
+for skill in found_skills:
+    print("✓", skill)
 print("\nCategory Performance:")
 for category, scores in category_scores.items():
     avg = sum(scores) / len(scores)
@@ -87,13 +89,19 @@ elif average_score >= 60:
     print("\nGood performance!")
 else:
     print("\nNeeds improvement.")
-    
+
 with open("report.txt", "w") as file:
 
     file.write("Interview Report\n")
     file.write("====================\n\n")
 
     file.write(f"Average Score: {average_score:.2f}%\n\n")
+
+    file.write("Detected Skills:\n")
+    for skill in found_skills:
+        file.write(f"✓ {skill}\n")
+
+    file.write("\n")
 
     file.write("Category Performance:\n")
     for category, scores in category_scores.items():
