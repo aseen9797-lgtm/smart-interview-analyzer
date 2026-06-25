@@ -87,3 +87,32 @@ elif average_score >= 60:
     print("\nGood performance!")
 else:
     print("\nNeeds improvement.")
+    
+with open("report.txt", "w") as file:
+
+    file.write("Interview Report\n")
+    file.write("====================\n\n")
+
+    file.write(f"Average Score: {average_score:.2f}%\n\n")
+
+    file.write("Category Performance:\n")
+    for category, scores in category_scores.items():
+        avg = sum(scores) / len(scores)
+        file.write(f"{category}: {avg:.2f}%\n")
+
+    file.write("\nDetailed Report:\n")
+
+    for item in report:
+        file.write("\n-------------------\n")
+        file.write(f"Question: {item['question']}\n")
+        file.write(f"Score: {item['score']:.2f}%\n")
+
+        file.write("Matched Concepts:\n")
+        for concept in item["matched"]:
+            file.write(f"✓ {concept}\n")
+
+        file.write("Missing Concepts:\n")
+        for concept in item["missing"]:
+            file.write(f"✗ {concept}\n")
+
+print("\nReport saved successfully to report.txt")

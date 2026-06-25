@@ -1,7 +1,11 @@
 from questions_mapping import skill_mapping
 import random
 def generate_questions():
-    resume_text = input("Paste your resume:\n")
+   from resume_parser import extract_resume_text
+
+resume_text = extract_resume_text(
+    r"C:\Users\aseen\Downloads\Resume_test.pdf"
+)
     found_skills = []
     for skill in skill_mapping:
         if skill.lower() in resume_text.lower():
@@ -16,4 +20,4 @@ def generate_questions():
         generated_questions.append(question)
         print("-", question)
     generated_questions = list(set(generated_questions))
-    return generated_questions  
+return generated_questions, found_skills
