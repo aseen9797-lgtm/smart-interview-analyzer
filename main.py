@@ -1,30 +1,49 @@
 from questions import questions
+from skill_extractor import generate_questions
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+
 def compare_answers(ideal_answer, user_answer):
     vectorizer = TfidfVectorizer()
     vectors = vectorizer.fit_transform([ideal_answer, user_answer])
     similarity = cosine_similarity(vectors[0], vectors[1])
     score = similarity[0][0] * 100
     return score
+
+selected_questions = generate_questions()
+
 total_score = 0
 report = []
 category_scores = {}
-for question, data in questions.items():
+
+for question in selected_questions:
+
+    if question not in questions:
+        continue
+
+    data = questions[question]
+
     print("\nQuestion:", question)
+
     matched = []
     missing = []
+
     user_answer = input("Your answer: ")
+
     ideal_answer = data["ideal_answer"]
     concepts = data["concepts"]
     category = data["category"]
+
     score = compare_answers(ideal_answer, user_answer)
+
     print(f"Similarity Score: {score:.2f}%")
+
     print("\nMatched Concepts:")
     for concept in concepts:
         if concept.lower() in user_answer.lower():
             print("✓", concept)
             matched.append(concept)
+
     print("\nMissing Concepts:")
     for concept in concepts:
         if concept.lower() not in user_answer.lower():
@@ -39,8 +58,12 @@ for question, data in questions.items():
     })
     if category not in category_scores:
         category_scores[category] = []
+
     category_scores[category].append(score)
-average_score = total_score / len(questions)
+if len(report) > 0:
+    average_score = total_score / len(report)
+else:
+    average_score = 0
 print("\nInterview Completed!")
 print(f"Average Score: {average_score:.2f}%")
 print("\nCategory Performance:")
