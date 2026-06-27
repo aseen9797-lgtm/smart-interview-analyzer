@@ -1,23 +1,24 @@
-from questions import questions
-from skill_extractor import generate_questions
+from skill_extractor import extract_skills
+from question_generator import generate_questions
 from gemini_evaluator import evaluate_answer
-selected_questions, found_skills = generate_questions()
+found_skills = extract_skills()
+
+generated = generate_questions(found_skills)
+
+selected_questions = generated
 total_score = 0
 report = []
 category_scores = {}
-for question in selected_questions:
+for item in selected_questions:
 
-    if question not in questions:
-        continue
-
-    category = questions[question]["category"]
+    question = item["question"]
+    category = item["skill"]
 
     print("\nQuestion:", question)
 
     user_answer = input("Your answer: ")
 
     feedback = evaluate_answer(question, user_answer)
-
     score = feedback["score"]
     strengths = feedback["strengths"]
     missing = feedback["missing_concepts"]
