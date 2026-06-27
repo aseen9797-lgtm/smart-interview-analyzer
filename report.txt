@@ -1,6 +1,59 @@
 Interview Report
-====================
+===========================
 
-Average Score: 0.00%
+Average Score: 3.50/10
 
 Detected Skills:
+✓ python
+✓ machine learning
+✓ nlp
+✓ tensorflow
+
+Category Performance:
+Machine Learning: 4.00/10
+Python: 3.00/10
+
+Detailed Report
+
+---------------------------------
+Question: What is Machine Learning?
+Score: 4/10
+
+Strengths:
+✓ Correctly identifies Machine Learning as a subfield of Artificial Intelligence.
+✓ Recognizes that Machine Learning involves processing data.
+✓ Identifies prediction as a primary goal or outcome of Machine Learning.
+
+Missing Concepts:
+✗ The core concept of 'learning' from data to improve performance on a task without explicit programming.
+✗ The role of algorithms and statistical models in identifying patterns and relationships within data.
+✗ The idea of building a 'model' from training data.
+✗ Generalization: the ability of the learned model to make accurate predictions or decisions on new, unseen data.
+✗ The iterative nature of training, evaluation, and refinement.
+✗ The objective of solving specific problems or automating complex tasks.
+
+Suggestions:
+→ Elaborate on 'learning' by explaining that ML systems develop the ability to perform tasks by finding patterns in data, rather than being explicitly coded for every possible scenario.
+→ Mention the use of algorithms and statistical techniques to build predictive or decision-making 'models' from data.
+→ Explain that these models are then used to make predictions or take actions on new data, demonstrating generalization.
+→ Provide a brief example of how ML is used to make the explanation more concrete.
+
+---------------------------------
+Question: What is Python?
+Score: 3/10
+
+Strengths:
+✓ Correctly identifies Python as a high-level language.
+
+Missing Concepts:
+✗ Python is an interpreted language (the phrasing was awkward).
+✗ Python is a general-purpose language.
+✗ Python is object-oriented.
+✗ Python is dynamically typed.
+✗ Emphasis on readability and simple syntax.
+
+Suggestions:
+→ Improve grammatical accuracy when describing language features.
+→ Clearly state that Python is an interpreted language.
+→ Expand on other fundamental characteristics such as general-purpose, object-oriented, and dynamically typed.
+→ Mention its design philosophy, such as its emphasis on readability.
