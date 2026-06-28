@@ -3,34 +3,28 @@ import streamlit as st
 import json
 
 API_KEY = st.secrets["GEMINI_API_KEY"]
-
 client = genai.Client(api_key=API_KEY)
+
 
 def generate_questions(skills):
 
     prompt = f"""
-You are an expert technical interviewer.
+You are a strict JSON generator.
 
-Generate interview questions based on these skills:
+Generate interview questions.
 
-{', '.join(skills)}
+Skills: {', '.join(skills)}
 
 Rules:
-- Generate 2 questions per skill.
-- Start with easy questions, then medium.
-- Return ONLY valid JSON.
+- 2 questions per skill
+- easy to medium difficulty
+- ONLY return valid JSON array
+- NO markdown, NO explanation
 
 Format:
-
 [
-    {{
-        "skill": "Python",
-        "question": "What is Python?"
-    }},
-    {{
-        "skill": "Python",
-        "question": "What are decorators in Python?"
-    }}
+  {{"skill": "Python", "question": "..."}},
+  {{"skill": "Python", "question": "..."}}
 ]
 """
 
@@ -40,15 +34,17 @@ Format:
             contents=prompt
         )
 
-    except Exception as e:
-        st.error(f"Gemini Error: {e}")
-        raise
-
-    text = response.text.strip()
-
-    if text.startswith("```json"):
+        text = response.text.strip()
         text = text.replace("```json", "").replace("```", "").strip()
-    elif text.startswith("```"):
-        text = text.replace("```", "").strip()
 
-    return json.loads(text)
+        questions = json.loads(text)
+
+        if not isinstance(questions, list):
+            raise ValueError("Invalid format")
+
+        return questions
+
+    except Exception as e:
+        st.error("Failed to generate questions. Please retry.")
+        st.write(str(e))
+        return []
