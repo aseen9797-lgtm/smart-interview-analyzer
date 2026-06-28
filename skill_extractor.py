@@ -1,10 +1,8 @@
 from resume_parser import extract_resume_text
 
-def extract_skills():
+def extract_skills(pdf_path):
 
-    resume_text = extract_resume_text(
-        r"C:\Users\aseen\Downloads\Resume_test.pdf"
-    )
+    resume_text = extract_resume_text(pdf_path)
 
     skills_database = [
         "python",
@@ -29,9 +27,5 @@ def extract_skills():
     for skill in skills_database:
         if skill.lower() in resume_text.lower():
             found_skills.append(skill)
-
-    print("\nSkills Found:")
-    for skill in found_skills:
-        print("✓", skill)
 
     return found_skills

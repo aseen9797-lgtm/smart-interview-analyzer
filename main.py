@@ -1,8 +1,7 @@
 from skill_extractor import extract_skills
 from question_generator import generate_questions
 from gemini_evaluator import evaluate_answer
-found_skills = extract_skills()
-
+found_skills = extract_skills("Resume_test.pdf")
 generated = generate_questions(found_skills)
 
 selected_questions = generated
