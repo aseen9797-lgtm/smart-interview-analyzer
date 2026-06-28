@@ -1,9 +1,11 @@
 from google import genai
 import streamlit as st
 import json
+
 API_KEY = st.secrets["GEMINI_API_KEY"]
 
 client = genai.Client(api_key=API_KEY)
+
 def generate_questions(skills):
 
     prompt = f"""
@@ -33,14 +35,17 @@ Format:
 """
 
     try:
-    response = client.models.generate_content(
-        model="gemini-1.5-flash",
-        contents=prompt
-    )
+        response = client.models.generate_content(
+            model="gemini-1.5-flash",
+            contents=prompt
+        )
+
     except Exception as e:
-    st.error(f"Gemini Error: {e}")
-    raise
+        st.error(f"Gemini Error: {e}")
+        raise
+
     text = response.text.strip()
+
     if text.startswith("```json"):
         text = text.replace("```json", "").replace("```", "").strip()
     elif text.startswith("```"):
