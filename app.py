@@ -14,9 +14,8 @@ st.title("🤖 Smart Interview Analyzer")
 
 st.write("Upload your resume to begin your AI interview.")
 
-# ----------------------------
 # Initialize session state
-# ----------------------------
+# 
 if "questions" not in st.session_state:
     st.session_state.questions = []
 
@@ -29,9 +28,7 @@ if "scores" not in st.session_state:
 if "started" not in st.session_state:
     st.session_state.started = False
 
-# ----------------------------
 # Upload Resume
-# ----------------------------
 uploaded_file = st.file_uploader("Upload Resume", type=["pdf"])
 
 if uploaded_file is not None:
@@ -58,9 +55,7 @@ if uploaded_file is not None:
 
         st.success("Interview Started!")
 
-# ----------------------------
 # Interview Flow
-# ----------------------------
 if st.session_state.started and len(st.session_state.questions) > 0:
 
     q_index = st.session_state.current_q
