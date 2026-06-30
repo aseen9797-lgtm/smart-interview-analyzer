@@ -1,14 +1,24 @@
 # Smart Interview Analyzer
 
-Smart Interview Analyzer is an AI-powered interview simulation platform that analyzes a candidate's resume, generates personalized interview questions, and evaluates responses in real time using Google's Gemini API.
+An AI-powered interview simulator that analyzes a candidate's resume, generates personalized interview questions, and evaluates responses in real time using Google's Gemini API.
+
+## Overview
+
+Smart Interview Analyzer is designed to simulate a personalized technical interview. Instead of asking generic questions, the application analyzes the uploaded resume and generates interview questions tailored to the candidate's skills, projects, and experience.
+
+The project explores how Large Language Models (LLMs) and Natural Language Processing (NLP) can be applied to interview preparation and hiring workflows.
 
 ## Features
 
 - Upload a resume in PDF format
-- Extract and analyze resume content
-- Generate interview questions based on the candidate's profile
-- Evaluate answers using AI
-- Provide strengths, missing concepts, and suggestions for improvement
+- Resume parsing using pdfplumber
+- AI-generated interview questions based on resume content
+- Real-time answer evaluation
+- Feedback including:
+  - Overall score
+  - Strengths
+  - Missing concepts
+  - Suggestions for improvement
 - Interactive web interface built with Streamlit
 
 ## Tech Stack
@@ -20,51 +30,37 @@ Smart Interview Analyzer is an AI-powered interview simulation platform that ana
 - Natural Language Processing (NLP)
 - Large Language Models (LLMs)
 
-## How It Works
+## Project Workflow
 
-1. Upload your resume.
-2. The application extracts and analyzes the resume content.
-3. Gemini generates interview questions based on your profile.
-4. Answer the generated questions.
-5. The AI evaluates your responses and provides:
-   - Overall score
-   - Strengths
-   - Missing concepts
-   - Suggestions for improvement
-
-## Project Structure
-
-```text
-app.py                  # Main Streamlit application
-resume_parser.py        # Resume parsing
-question_generator.py   # Interview question generation
-gemini_evaluator.py     # Answer evaluation
-requirements.txt
-README.md
-```
+1. Upload a resume.
+2. The application extracts and analyzes the resume.
+3. Gemini generates personalized interview questions.
+4. The candidate answers the questions.
+5. The AI evaluates each response and provides constructive feedback.
 
 ## Installation
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_LINK
+git clone https://github.com/aseen9797-lgtm/smart-interview-analyzer.git
+
 cd smart-interview-analyzer
+
 pip install -r requirements.txt
+
 streamlit run app.py
 ```
 
 ## Future Improvements
 
-- Voice-based interview support
+- Voice-based interviews
 - Speech-to-text integration
-- Follow-up questions based on previous answers
-- Improved evaluation logic
-- Performance dashboard
+- Follow-up questions based on previous responses
+- Improved scoring and evaluation logic
 - Multi-round interview simulation
+- Performance analytics dashboard
 
-## Contributing
+## Author
 
-Suggestions and feedback are welcome. Feel free to open an issue or submit a pull request.
+Aseen
 
-## Contact
-
-If you'd like to discuss this project or connect regarding AI and Machine Learning, feel free to reach out on LinkedIn.
+Feel free to connect with me on LinkedIn or share suggestions for improving the project.
